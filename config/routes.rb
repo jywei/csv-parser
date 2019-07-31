@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root 'welcome#show'
   get 'welcome/show'
   get 'welcome/upload'
+
+  resources :people
 end
