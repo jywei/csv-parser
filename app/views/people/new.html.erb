@@ -1,0 +1,12 @@
+<div class='container'>
+  <h1 class='mt-4'>Please upload your CSV</h1>
+  <br>
+  <div class = 'form-group'>
+    <%= form_tag import_people_path, method: :post, multipart: true, class: 'form-inline' do %>
+      <span class='btn btn-large btn-default'>
+        <%= file_field_tag :file %>
+      </span>
+      <%= submit_tag 'Import', class: 'btn btn-submit btn-info' %>
+    <% end %>
+  </div>
+</div>
