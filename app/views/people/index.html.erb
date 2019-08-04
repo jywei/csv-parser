@@ -8,17 +8,21 @@
         <th>Gender</th>
         <th>Weapon</th>
         <th>Vehicle</th>
+        <th>Locations</th>
+        <th>Affiliations</th>
       </tr>
     </thead>
     <tbody>
       <% @people.each do |person| %>
         <tr>
-          <td><%= link_to(person.first_name, person_path(person)) %></td>
+          <td><%= person.first_name %></td>
           <td><%= person.last_name %></td>
           <td><%= person.species %></td>
           <td><%= person.gender %></td>
           <td><%= person.weapon %></td>
           <td><%= person.vehicle %></td>
+          <td><%= person.locations.pluck(:name).join(", ") %></td>
+          <td><%= person.affiliations.pluck(:name).join(", ") %></td>
         </tr>
       <% end %>
     </tbody>
