@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'welcome#show'
-  get 'welcome/show'
-  get 'welcome/upload'
 
-  resources :people
+  resources :people do
+    collection { post :import }
+  end
+
+  root 'welcome#show'
 end
