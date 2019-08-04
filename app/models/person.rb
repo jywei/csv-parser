@@ -25,17 +25,15 @@ class Person < ApplicationRecord
         next unless person.valid?
         person.save!
 
-        # binding.pry
-
         locations = row['Location'].split(',')
         locations.each do |location|
           location = location.strip
-          person.locations << Location.find_or_create_by(name: location.capitalize)
+          person.locations << Location.find_or_create_by(name: location.titleize)
         end
         next unless row['Affiliations'].present?
         affiliations = row['Affiliations'].split(',')
         affiliations.each do |affiliation|
-          person.affiliations << Affiliation.find_or_create_by(name: affiliation.capitalize)
+          person.affiliations << Affiliation.find_or_create_by(name: affiliation.titleize)
         end
       end
     end
