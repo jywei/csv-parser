@@ -2,17 +2,19 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <td>Name</td>
-        <td>Species</td>
-        <td>Gender</td>
-        <td>Weapon</td>
-        <td>Vehicle</td>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Species</th>
+        <th>Gender</th>
+        <th>Weapon</th>
+        <th>Vehicle</th>
       </tr>
     </thead>
     <tbody>
       <% @people.each do |person| %>
         <tr>
-          <td><%= link_to(person.name, person_path(person)) %></td>
+          <td><%= link_to(person.first_name, person_path(person)) %></td>
+          <td><%= person.last_name %></td>
           <td><%= person.species %></td>
           <td><%= person.gender %></td>
           <td><%= person.weapon %></td>
