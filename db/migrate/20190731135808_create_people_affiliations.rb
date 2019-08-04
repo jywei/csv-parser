@@ -1,7 +1,8 @@
 class CreatePeopleAffiliations < ActiveRecord::Migration[5.2]
   def change
     create_table :people_affiliations do |t|
-      t.references :people
+      t.references :person
+      t.references :affiliation
 
       t.timestamps
     end

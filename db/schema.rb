@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_31_135808) do
+ActiveRecord::Schema.define(version: 2019_07_31_143738) do
 
   create_table "affiliations", force: :cascade do |t|
     t.string "name"
@@ -25,27 +25,32 @@ ActiveRecord::Schema.define(version: 2019_07_31_135808) do
   end
 
   create_table "people", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
     t.string "species"
     t.string "gender"
     t.string "weapon"
     t.string "vehicle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "last_name"
   end
 
   create_table "people_affiliations", force: :cascade do |t|
-    t.integer "people_id"
+    t.integer "person_id"
+    t.integer "affiliation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["people_id"], name: "index_people_affiliations_on_people_id"
+    t.index ["affiliation_id"], name: "index_people_affiliations_on_affiliation_id"
+    t.index ["person_id"], name: "index_people_affiliations_on_person_id"
   end
 
   create_table "people_locations", force: :cascade do |t|
-    t.integer "people_id"
+    t.integer "person_id"
+    t.integer "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["people_id"], name: "index_people_locations_on_people_id"
+    t.index ["location_id"], name: "index_people_locations_on_location_id"
+    t.index ["person_id"], name: "index_people_locations_on_person_id"
   end
 
 end
