@@ -38,4 +38,22 @@ class Person < ApplicationRecord
       end
     end
   end
+
+  def self.search(search)
+    joins(:locations, :affiliations)
+      .select("locations.name, affiliations.name")
+      .where(
+        %{
+          lower(locations.name) LIKE :search OR
+          lower(affiliations.name) LIKE :search OR
+          lower(people.first_name) LIKE :search OR
+          lower(people.last_name) LIKE :search OR
+          lower(people.species) LIKE :search OR
+          lower(people.gender) LIKE :search OR
+          lower(people.weapon) LIKE :search OR
+          lower(people.vehicle) LIKE :search
+        },
+        search: "%#{sanitize_sql_like(search.try(:downcase))}%"
+      ).uniq
+  end
 end
